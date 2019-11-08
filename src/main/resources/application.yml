@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: pro
+
+---
+
+server:
+  port: 8081
+
+spring:
+  profiles: dev
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+
+user:
+  username: kurong
+  age: 18
+  list:
+    - a
+    - b
+  map:
+    k1: v1
+    k2: v2
+  set:
+    - 1
+    - 2
+
+---
+
+spring:
+  profiles: pro
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+
+server:
+  port: 8082
