@@ -27,6 +27,6 @@ public interface OrderMapper {
 	 * @param order
 	 * @return
 	 */
-	@Update("update or_order set create_time = #{createTime}, update_time = #{updateTime} where id = #{id}")
-	Order updateOrder(Order order);
+	@Update("update or_order set create_time = 12345 where id = #{id}")
+	int updateOrder(Order order);
 }

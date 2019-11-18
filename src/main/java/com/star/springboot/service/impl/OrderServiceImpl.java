@@ -1,6 +1,5 @@
 package com.star.springboot.service.impl;
 
-import com.star.springboot.dao.OrderDao;
 import com.star.springboot.mapper.OrderMapper;
 import com.star.springboot.po.Order;
 import com.star.springboot.service.OrderService;
@@ -29,9 +28,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderMapper.getOrderById(id);
 	}
 
-	@CachePut(value = "order", key = "id")
+	@CachePut(value = "order", key = "#result.id")
 	@Override
 	public Order updateOrder(Order order) {
-		return orderMapper.updateOrder(order);
+		orderMapper.updateOrder(order);
+		return order;
 	}
 }

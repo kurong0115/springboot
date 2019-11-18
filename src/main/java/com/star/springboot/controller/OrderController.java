@@ -7,6 +7,7 @@ import com.star.springboot.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,4 +33,9 @@ public class OrderController {
 	public Object order(@PathVariable("id") Integer id){
 		return orderService.getOrderById(id);
 	}
+
+    @GetMapping("/update")
+    public Object updateOrder(@RequestBody Order order){
+        return orderService.updateOrder(order);
+    }
 }
