@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 /**
  * @ClassName OrderMapper
  * @Description 订单接口
@@ -29,4 +31,5 @@ public interface OrderMapper {
 	 */
 	@Update("update or_order set create_time = 12345 where id = #{id}")
 	int updateOrder(Order order);
+
 }

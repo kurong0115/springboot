@@ -38,4 +38,9 @@ public class OrderController {
     public Object updateOrder(@RequestBody Order order){
         return orderService.updateOrder(order);
     }
+
+    @GetMapping("/listAll")
+    public Object listAllOrder(){
+	    return orderService.listAllOrder();
+    }
 }

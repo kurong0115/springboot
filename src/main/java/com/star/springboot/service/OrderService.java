@@ -2,6 +2,8 @@ package com.star.springboot.service;
 
 import com.star.springboot.po.Order;
 
+import java.util.List;
+
 /**
  * @ClassName OrderService
  * @Description 订单接口
@@ -24,4 +26,10 @@ public interface OrderService {
 	 * @return
 	 */
 	Order updateOrder(Order order);
+
+    /**
+     * 列出所有的订单
+     * @return
+     */
+	List<Order> listAllOrder();
 }
