@@ -1,14 +1,22 @@
 package com.star.springboot;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
 
+/**
+ * @author Administrator
+ */
 @SpringBootApplication
+@EnableCaching
+@MapperScan(value = "com.star.springboot.mapper")
 public class SpringbootApplication {
 
     public static void main(String[] args) {

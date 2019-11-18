@@ -1,5 +1,6 @@
 package com.star.springboot.controller;
 
+import com.star.springboot.annotation.PassToken;
 import com.star.springboot.annotation.UserLogin;
 import com.star.springboot.po.User;
 import com.star.springboot.service.UserService;
@@ -13,14 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Administrator
+ */
 @RestController
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
     public Object login(@RequestBody User user){
+        System.out.println(user);
         if (user == null){
             return null;
         }
@@ -28,6 +33,16 @@ public class UserController {
         Map<String, Object> map = new HashMap<>(16);
         map.put("token", JwtUtils.getToken(user));
         map.put("user", tmp);
+        return map;
+    }
+
+    @PassToken
+    @RequestMapping(value = "/print", method = RequestMethod.POST)
+    public Object print(User user){
+        System.out.println(user);
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("token", JwtUtils.getToken(user));
+        map.put("user", user);
         return map;
     }
 

@@ -1,5 +1,8 @@
 package com.star.springboot;
 
+import com.alibaba.fastjson.JSON;
+import com.star.springboot.dao.RedisDao;
+import com.star.springboot.mapper.OrderMapper;
 import com.star.springboot.po.User;
 import com.star.springboot.service.UserRedisService;
 import org.apache.shiro.SecurityUtils;
@@ -8,11 +11,14 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.subject.Subject;
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
+
+import javax.sql.DataSource;
 
 @SpringBootTest
+@MapperScan(value = "com.star.springboot.mapper")
 class SpringbootApplicationTests {
 
     @Autowired
@@ -21,11 +27,33 @@ class SpringbootApplicationTests {
     @Autowired
     UserRedisService userRedisService;
 
+    @Autowired
+	RedisDao redisDao;
+
+	@Autowired
+	DataSource dataSource;
+
+	@Autowired
+	OrderMapper orderMapper;
+
+    @Test
+	public void dataSourceTest(){
+		System.out.println(dataSource);
+	}
+
+	@Test
+	public void connectTest(){
+		System.out.println(orderMapper.getOrderById(1));
+	}
+
     @Test
     void contextLoads() {
-        System.out.println(user);
-        System.out.println(userRedisService.getAge("age"));
-    }
+		String json = JSON.toJSONString(user);
+		redisDao.set("user", json);
+		String u = redisDao.get("user");
+		User object = JSON.parseObject(u, User.class);
+		System.out.println(object);
+	}
 
     @Test
     public void testHelloworld() {

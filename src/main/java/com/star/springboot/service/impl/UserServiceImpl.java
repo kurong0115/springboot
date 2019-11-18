@@ -1,12 +1,13 @@
 package com.star.springboot.service.impl;
 
+import com.star.springboot.annotation.RedisCache;
 import com.star.springboot.po.User;
 import com.star.springboot.service.UserService;
 import org.springframework.stereotype.Service;
 
 /**
  * @ClassName UserServiceImpl
- * @Description TODO
+ * @Description 实现类
  * @Author Administrator
  * @Date 2019/11/8 10:11
  * @Version 1.0
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Override
+    @RedisCache
     public User login(User user) {
         if (user == null){
             return null;

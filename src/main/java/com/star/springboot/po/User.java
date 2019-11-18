@@ -13,9 +13,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author Administrator
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
+@ConfigurationProperties(prefix = "user")
 public class User implements Serializable {
 
     private Integer id;
@@ -26,10 +31,10 @@ public class User implements Serializable {
 
     private Integer age;
 
-    private List<Object> list;
+    private transient List<Object> list;
 
-    private Map<String, Object> map;
+    private transient Map<String, Object> map;
 
-    private Set<Object> set;
+    private transient Set<Object> set;
 
 }

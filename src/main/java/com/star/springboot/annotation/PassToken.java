@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  * @Date 2019/11/8 10:20
  * @Version 1.0
  */
-@Target({ElementType.ANNOTATION_TYPE, ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PassToken {
     boolean required() default true;

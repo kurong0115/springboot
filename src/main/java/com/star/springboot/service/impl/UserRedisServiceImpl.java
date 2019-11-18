@@ -6,6 +6,8 @@ import com.star.springboot.service.UserRedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 /**
  * @ClassName UserRedisServiceImpl
  * @Description TODO
@@ -19,9 +21,24 @@ public class UserRedisServiceImpl implements UserRedisService {
     @Autowired
     RedisDao redisDao;
 
-    @Override
+	@Override
+	public Map<Object, Object> hgetAll(String key) {
+		return redisDao.hgetAll(key);
+	}
+
+	@Override
+	public Object hget(String key, String item) {
+		return redisDao.hget(key, item);
+	}
+
+	@Override
+	public void putAll(String key, Map<String, Object> map) {
+		redisDao.putAll(key, map);
+	}
+
+	@Override
     public void saveUser(User user) {
-        redisDao.hset("user", "user1", user);
+        redisDao.hset("user", "user", user);
     }
 
     @Override
