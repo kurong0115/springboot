@@ -3,6 +3,7 @@ package com.star.springboot.mapper;
 import com.star.springboot.po.Order;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * @Date 2019/11/15 9:04
  * @Version 1.0
  */
+@Repository
 public interface OrderMapper {
 
 	/**
