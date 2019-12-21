@@ -3,13 +3,11 @@ package com.star.springboot.controller;
 import com.star.springboot.annotation.PassToken;
 import com.star.springboot.annotation.UserLogin;
 import com.star.springboot.po.User;
+import com.star.springboot.service.AsyncTask;
 import com.star.springboot.service.UserService;
 import com.star.springboot.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +17,9 @@ import java.util.Map;
  */
 @RestController
 public class UserController {
+
+    @Autowired
+    AsyncTask asyncTask;
 
     @Autowired
     UserService userService;
@@ -50,5 +51,11 @@ public class UserController {
     @UserLogin
     public Object getMessage(){
         return "getMessage";
+    }
+
+    @GetMapping(value = "postMessage")
+    public Object postMessage(){
+        asyncTask.postMessage();
+        return "success";
     }
 }
