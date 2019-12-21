@@ -75,7 +75,11 @@ spring:
       filter.wall.db-type: mysql
       filter.wall.config.delete-allow: false
       filter.wall.config.drop-table-allow: false
-
+  elasticsearch:
+    jest:
+      proxy:
+        host: localhost
+        port: 9200
 user:
   username: kurong
   age: 18
