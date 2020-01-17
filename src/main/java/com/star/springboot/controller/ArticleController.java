@@ -1,7 +1,9 @@
 package com.star.springboot.controller;
 
 import com.star.springboot.po.Article;
+import com.star.springboot.protocol.ApiResponse;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,5 +27,10 @@ public class ArticleController {
 			return bindingResult.getAllErrors();
 		}
 		return article;
+	}
+
+	@GetMapping(value = "/response")
+	public ApiResponse<String> response() {
+		return new ApiResponse().builder().code(200).message("ok").data("Hello World").build();
 	}
 }
